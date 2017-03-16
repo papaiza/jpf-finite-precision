@@ -1,0 +1,4 @@
+target=Main
+classpath=./bin
+native_classpath=./bin
+listener=FinitePrecisionListener
