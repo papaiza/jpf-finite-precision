@@ -6,30 +6,43 @@ import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
 import gov.nasa.jpf.vm.VMListener;
+import gov.nasa.jpf.vm.bytecode.ArrayElementInstruction;
 
 public class FinitePrecisionListener extends ListenerAdapter implements VMListener{
 	public void executeInstruction(VM vm, ThreadInfo currentThread, Instruction instructionToExecute){
+		
+		StackFrame frame = currentThread.getModifiableTopFrame();
+
+		
+		if (instructionToExecute instanceof ArrayElementInstruction)
+		{
+		}
+		
 		if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.FADD")){
-			StackFrame frame = currentThread.getModifiableTopFrame();
-			
 			float v1 = frame.popFloat();
 			float v2 = frame.popFloat();
-			
-			checkFloatRoundOff(v1, v2);
-		}
-	}
-
-	private void checkFloatRoundOff(float v1, float v2) {
-		float val1 = v1 * (float)Math.pow(10, 16);
-		float val2 = v2 * (float)Math.pow(10, 16);
-		
-		float valTotal = val1 + val2;
-		if(valTotal >= Float.MAX_VALUE){
-			System.out.println("Would result in rounding error. Too precise.");
+			FloatOperations.handleFloatAdd(v1, v2);
 		}
 		
-		System.out.println(val1);
-		
-		System.out.println("Random!");
+		else if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.IADD")){
+			int val1 = frame.pop();
+			int val2 = frame.pop();
+			IntegerOperations.handleIntAdd(val1, val2);
+		}
+		else if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.ISUB")){
+			int val1 = frame.pop();
+			int val2 = frame.pop();
+			IntegerOperations.handleIntSub(val1, val2);
+		}
+		else if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.IMUL")){
+			int val1 = frame.pop();
+			int val2 = frame.pop();
+			IntegerOperations.handleIntMult(val1, val2);
+		}
+		else if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.IDIV")){
+			int val1 = frame.pop();
+			int val2 = frame.pop();
+			IntegerOperations.handleIntDiv(val1, val2);
+		}
 	}
 }
