@@ -1,4 +1,4 @@
-target=Main
-classpath=./bin
-native_classpath=./bin
-listener=FinitePrecisionListener
+target=main.Main
+classpath=/Users/antonsitkovets/school/MissionCritical/jpf-finite-precision/bin
+native_classpath=/Users/antonsitkovets/school/MissionCritical/jpf-finite-precision/bin
+listener=listener.FinitePrecisionListener
