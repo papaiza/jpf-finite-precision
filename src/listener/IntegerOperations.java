@@ -2,6 +2,9 @@ package listener;
 
 public class IntegerOperations {
 	
+	/*
+	 * Handle Integer Addition Overflow and Underflow
+	 */
 	public static void handleIntAdd(int val1, int val2){
 		
 		int result = val1 + val2;
@@ -13,6 +16,9 @@ public class IntegerOperations {
 		
 	}
 	
+	/*
+	 * Handle Integer Subtraction Overflow and Underflow
+	 */
 	public static void handleIntSub(int val1, int val2){
 		
 		int result = val2 - val1;
@@ -24,6 +30,9 @@ public class IntegerOperations {
 		
 	}
 	
+	/*
+	 * Handle Integer Multiplication Overflow and Underflow
+	 */
 	public static void handleIntMult(int val1, int val2){
 		
 		int result = val1 * val2;
@@ -34,6 +43,9 @@ public class IntegerOperations {
 		
 	}
 	
+	/*
+	 * Handle Integer Division Overflow
+	 */
 	public static void handleIntDiv(int val1, int val2){
 		
 		if(val1 == 0){

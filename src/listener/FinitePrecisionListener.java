@@ -44,5 +44,25 @@ public class FinitePrecisionListener extends ListenerAdapter implements VMListen
 			int val2 = frame.pop();
 			IntegerOperations.handleIntDiv(val1, val2);
 		}
+		else if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.LADD")){
+			long val1 = frame.popLong();
+			long val2 = frame.popLong();
+			LongOperations.handleLongAdd(val1, val2);
+		}
+		else if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.LSUB")){
+			long val1 = frame.popLong();
+			long val2 = frame.popLong();
+			LongOperations.handleLongSub(val1, val2);
+		}
+		else if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.LMUL")){
+			long val1 = frame.popLong();
+			long val2 = frame.popLong();
+			LongOperations.handleLongMult(val1, val2);
+		}
+		else if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.LDIV")){
+			long val1 = frame.popLong();
+			long val2 = frame.popLong();
+			LongOperations.handleLongDiv(val1, val2);
+		}
 	}
 }
