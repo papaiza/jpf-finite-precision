@@ -6,18 +6,18 @@ import listener.FloatOperations;
 
 public class FloatTest {
 	@Test(expected=ArithmeticException.class)
-	public void testFloatAddOverflow(){
-		float val1 = Float.MAX_VALUE;
-		float val2 = 5;
+	public void testFloatAddCancellation(){
+		float a = Float.MAX_VALUE;
+	    float b = 0.463298662704123123f;
 		
-		FloatOperations.handleFloatAdd(val1, val2);
+		FloatOperations.handleFloatAdd(a, b);
 		
 	}
 	
 	@Test(expected=ArithmeticException.class)
-	public void testFloatAddUnderflow(){
-		float val1 = Float.MIN_VALUE;
-		float val2 = -5;
+	public void testFloatAddNaN(){
+		float val1 = Float.POSITIVE_INFINITY;
+		float val2 = Float.POSITIVE_INFINITY;
 		
 		FloatOperations.handleFloatAdd(val1, val2);
 		
@@ -25,14 +25,14 @@ public class FloatTest {
 	
 	@Test
 	public void testFloatAdd(){
-		float val1 = 8;
-		float val2 = 5;
+		float val1 = 8.25f;
+		float val2 = 5.35f;
 		
 		FloatOperations.handleFloatAdd(val1, val2);		
 	}
 	
 	@Test(expected=ArithmeticException.class)
-	public void testFloatSubOverflow(){
+	public void testFloatSubCancellation(){
 		float val1 = Float.MAX_VALUE;
 		float val2 = -5;
 		
@@ -41,7 +41,7 @@ public class FloatTest {
 	}
 	
 	@Test(expected=ArithmeticException.class)
-	public void testFloatSubUnderflow(){
+	public void testFloatSubNaN(){
 		float val1 = Float.MIN_VALUE;
 		float val2 = 5;
 		
@@ -58,7 +58,7 @@ public class FloatTest {
 	}
 	
 	@Test(expected=ArithmeticException.class)
-	public void testFloatMultOverflow(){
+	public void testFloatMultCancellation(){
 		float val1 = Float.MAX_VALUE;
 		float val2 = 5;
 		
@@ -67,7 +67,7 @@ public class FloatTest {
 	}
 	
 	@Test(expected=ArithmeticException.class)
-	public void testFloatMultUnderflow(){
+	public void testFloatMultNaN(){
 		float val1 = Float.MIN_VALUE;
 		float val2 = 5;
 		
@@ -84,7 +84,7 @@ public class FloatTest {
 	}
 	
 	@Test(expected=ArithmeticException.class)
-	public void testFloatDivOverflow(){
+	public void testFloatDivCancellation(){
 		float val1 = -1;
 		float val2 = Float.MIN_VALUE;
 		

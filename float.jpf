@@ -1,0 +1,5 @@
+target=main.FloatMain
+classpath=./bin
+native_classpath=./bin
+listener=listener.FinitePrecisionListener
+search.multiple_errors=true

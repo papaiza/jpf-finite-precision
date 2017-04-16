@@ -1,30 +1,20 @@
 package listener;
 
-import java.math.BigDecimal;
 
 public class DoubleOperations {
 	/*
 	 * Handle Double Division Overflow
 	 */
-	public static void handleDoubleAdd(double v1, double v2) {
+	public static void handleDoubleAdd(double val1, double val2) {
 		
-		double result = v1 + v2;
+		double result = val1 + val2;
 		
 		if(isNaN(result)){
-			throw new ArithmeticException("Result is not a number: " + v1 + "+" + v2 + "=" + result);
+			throw new ArithmeticException("Result is not a number: " + val1 + "+" + val2 + "=" + result);
 		}
 		
-		BigDecimal val1 = new BigDecimal(Double.toString(v1));
-		BigDecimal val2 = new BigDecimal(Double.toString(v2));
-		BigDecimal res = new BigDecimal(result);
-		
-		System.out.println("Result is " + res);
-		
-//		if(!val1.add(val2).equals(res)){
-//			throw new ArithmeticException("Result will have a potential round off error: " + v1 + "+" + v2 + "=" + result);
-//		}
-		if(checkCancellation(v1, v2, result)){
-			throw new ArithmeticException("Result will have a potential round off error: " + v1 + "+" + v2 + "=" + result);
+		if(checkCancellation(val1, val2, result)){
+			throw new ArithmeticException("Result will have a potential round off error: " + val1 + "+" + val2 + "=" + result);
 		}
 		
 	}
@@ -36,11 +26,14 @@ public class DoubleOperations {
 	 */
 	public static void handleDoubleSub(double val1, double val2){
 		
-		double result = val2 - val1;
+		double result = val1 - val2;
 		
-		if((val2 >= 0 && val1 < 0 && result <= 0 ) || 
-				(val2 < 0 && val1 > 0 && result >= 0 )){
-			throw new ArithmeticException("double overflow: " + val2 + "-" + val1 + "=" + result);
+		if(isNaN(result)){
+			throw new ArithmeticException("Result is not a number: " + val1 + "-" + val2 + "=" + result);
+		}
+		
+		if(checkCancellation(val1, val2, result)){
+			throw new ArithmeticException("Result will have a potential round off error: " + val1 + "-" + val2 + "=" + result);
 		}
 		
 	}
@@ -51,10 +44,13 @@ public class DoubleOperations {
 	public static void handleDoubleMult(double val1, double val2){
 		
 		double result = val1 * val2;
-		BigDecimal v1 = new BigDecimal(val1);
-		BigDecimal v2 = new BigDecimal(val2);
-		if(! v1.multiply(v2).equals(new BigDecimal(result))){
-			throw new ArithmeticException("double overflow: " + val1 + "*" + val2 + "=" + result);
+		
+		if(isNaN(result)){
+			throw new ArithmeticException("Result is not a number: " + val1 + "*" + val2 + "=" + result);
+		}
+		
+		if(checkCancellation(val1, val2, result)){
+			throw new ArithmeticException("Result will have a potential round off error: " + val1 + "*" + val2 + "=" + result);
 		}
 		
 	}
@@ -64,14 +60,14 @@ public class DoubleOperations {
 	 */
 	public static void handleDoubleDiv(double val1, double val2){
 		
-		if(val1 == 0){
-			throw new ArithmeticException("division by 0!");
-		}
-		
 		double result = val2 / val1;
 		
-		if(val2 == Double.MIN_VALUE && val1 == -1){
-			throw new ArithmeticException("double overflow: " + val2 + "/" + val1 + "=" + result);
+		if(isNaN(result)){
+			throw new ArithmeticException("Result is not a number: " + val2 + "/" + val1 + "=" + result);
+		}
+		
+		if(checkCancellation(val1, val2, result)){
+			throw new ArithmeticException("Result will have a potential round off error: " + val2 + "/" + val1 + "=" + result);
 		}
 		
 	}
