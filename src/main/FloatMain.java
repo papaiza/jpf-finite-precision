@@ -8,20 +8,20 @@ public class FloatMain {
 		float g = 2.11f;
 		// This should pass
 		float x = f + g;
-		System.out.println(x);
+//		System.out.println(x);
 		
 		
 		float aa = 0.890123f;
 		float bb = 0.543212f;
 		// This should pass
 		float y = aa + bb;
-		System.out.println(y);
+//		System.out.println(y);
 		
 		float a = Float.MAX_VALUE;
-	    float b = 0.463298662704123123f;
+	    float b = 0.46329866f;
 	    // This should fail
 	    float res = a + b;
-	    System.out.println(res);
+//	    System.out.println(res);
 	    
 	}
 

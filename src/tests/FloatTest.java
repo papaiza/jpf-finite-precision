@@ -7,17 +7,17 @@ import listener.FloatOperations;
 public class FloatTest {
 	@Test(expected=ArithmeticException.class)
 	public void testFloatAddCancellation(){
-		float a = Float.MAX_VALUE;
-	    float b = 0.463298662704123123f;
+		float val1 = Float.MAX_VALUE;
+	    float val2 = 0.463298662704123123f;
 		
-		FloatOperations.handleFloatAdd(a, b);
+		FloatOperations.handleFloatAdd(val1, val2);
 		
 	}
 	
 	@Test(expected=ArithmeticException.class)
 	public void testFloatAddNaN(){
-		float val1 = Float.POSITIVE_INFINITY;
-		float val2 = Float.POSITIVE_INFINITY;
+		float val1 = 1.0f/0.0f;
+		float val2 = 2;
 		
 		FloatOperations.handleFloatAdd(val1, val2);
 		
@@ -25,8 +25,8 @@ public class FloatTest {
 	
 	@Test
 	public void testFloatAdd(){
-		float val1 = 8.25f;
-		float val2 = 5.35f;
+		float val1 = 8.25123123f;
+		float val2 = 5.35123123f;
 		
 		FloatOperations.handleFloatAdd(val1, val2);		
 	}
@@ -34,7 +34,7 @@ public class FloatTest {
 	@Test(expected=ArithmeticException.class)
 	public void testFloatSubCancellation(){
 		float val1 = Float.MAX_VALUE;
-		float val2 = -5;
+	    float val2 = 0.463298662704123123f;
 		
 		FloatOperations.handleFloatSub(val2, val1);
 		
@@ -42,8 +42,8 @@ public class FloatTest {
 	
 	@Test(expected=ArithmeticException.class)
 	public void testFloatSubNaN(){
-		float val1 = Float.MIN_VALUE;
-		float val2 = 5;
+		float val1 = Float.NEGATIVE_INFINITY;
+		float val2 = Float.POSITIVE_INFINITY;
 		
 		FloatOperations.handleFloatSub(val2, val1);
 		
@@ -51,8 +51,8 @@ public class FloatTest {
 	
 	@Test
 	public void testFloatSub(){
-		float val1 = 8;
-		float val2 = 5;
+		float val1 = 8.1234123f;
+		float val2 = 5.123123234f;
 		
 		FloatOperations.handleFloatSub(val1, val2);		
 	}
