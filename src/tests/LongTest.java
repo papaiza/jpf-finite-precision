@@ -1,25 +1,26 @@
 package tests;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import listener.LongOperations;
 
 public class LongTest {
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testLongAddOverflow(){
 		long val1 = Long.MAX_VALUE;
 		long val2 = 5;
 		
-		LongOperations.handleLongAdd(val1, val2);
+		Assert.assertFalse(LongOperations.handleLongAdd(val1, val2));
 		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testLongAddUnderflow(){
 		long val1 = Long.MIN_VALUE;
 		long val2 = -5;
 		
-		LongOperations.handleLongAdd(val1, val2);
+		Assert.assertFalse(LongOperations.handleLongAdd(val1, val2));
 		
 	}
 	
@@ -28,24 +29,24 @@ public class LongTest {
 		long val1 = 8;
 		long val2 = 5;
 		
-		LongOperations.handleLongAdd(val1, val2);		
+		Assert.assertTrue(LongOperations.handleLongAdd(val1, val2));		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testLongSubOverflow(){
 		long val1 = Long.MAX_VALUE;
 		long val2 = -5;
 		
-		LongOperations.handleLongSub(val2, val1);
+		Assert.assertFalse(LongOperations.handleLongSub(val2, val1));
 		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testLongSubUnderflow(){
 		long val1 = Long.MIN_VALUE;
 		long val2 = 5;
 		
-		LongOperations.handleLongSub(val2, val1);
+		Assert.assertFalse(LongOperations.handleLongSub(val2, val1));
 		
 	}
 	
@@ -54,24 +55,24 @@ public class LongTest {
 		long val1 = 8;
 		long val2 = 5;
 		
-		LongOperations.handleLongSub(val1, val2);		
+		Assert.assertTrue(LongOperations.handleLongSub(val1, val2));		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testLongMultOverflow(){
 		long val1 = Long.MAX_VALUE;
 		long val2 = 5;
 		
-		LongOperations.handleLongMult(val1, val2);
+		Assert.assertFalse(LongOperations.handleLongMult(val1, val2));
 		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testLongMultUnderflow(){
 		long val1 = Long.MIN_VALUE;
 		long val2 = 5;
 		
-		LongOperations.handleLongMult(val1, val2);
+		Assert.assertFalse(LongOperations.handleLongMult(val1, val2));
 		
 	}
 	
@@ -80,15 +81,15 @@ public class LongTest {
 		long val1 = 8;
 		long val2 = 5;
 		
-		LongOperations.handleLongMult(val1, val2);		
+		Assert.assertTrue(LongOperations.handleLongMult(val1, val2));		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testLongDivOverflow(){
 		long val1 = -1;
 		long val2 = Long.MIN_VALUE;
 		
-		LongOperations.handleLongDiv(val1, val2);
+		Assert.assertFalse(LongOperations.handleLongDiv(val1, val2));
 		
 	}
 	
@@ -97,6 +98,6 @@ public class LongTest {
 		long val1 = 8;
 		long val2 = 5;
 		
-		LongOperations.handleLongDiv(val1, val2);		
+		Assert.assertTrue(LongOperations.handleLongDiv(val1, val2));		
 	}
 }

@@ -1,25 +1,27 @@
 package tests;
 
+import org.junit.Assert;
 import org.junit.Test;
+
 
 import listener.IntegerOperations;
 
 public class IntegerTest {
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testIntegerAddOverflow(){
 		int val1 = Integer.MAX_VALUE;
 		int val2 = 5;
 		
-		IntegerOperations.handleIntAdd(val1, val2);
+		Assert.assertFalse(IntegerOperations.handleIntAdd(val1, val2));
 		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testIntegerAddUnderflow(){
 		int val1 = Integer.MIN_VALUE;
 		int val2 = -5;
 		
-		IntegerOperations.handleIntAdd(val1, val2);
+		Assert.assertFalse(IntegerOperations.handleIntAdd(val1, val2));
 		
 	}
 	
@@ -28,24 +30,24 @@ public class IntegerTest {
 		int val1 = 8;
 		int val2 = 5;
 		
-		IntegerOperations.handleIntAdd(val1, val2);		
+		Assert.assertTrue(IntegerOperations.handleIntAdd(val1, val2));		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testIntegerSubOverflow(){
 		int val1 = Integer.MAX_VALUE;
 		int val2 = -5;
 		
-		IntegerOperations.handleIntSub(val2, val1);
+		Assert.assertFalse(IntegerOperations.handleIntSub(val2, val1));
 		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testIntegerSubUnderflow(){
 		int val1 = Integer.MIN_VALUE;
 		int val2 = 5;
 		
-		IntegerOperations.handleIntSub(val2, val1);
+		Assert.assertFalse(IntegerOperations.handleIntSub(val2, val1));
 		
 	}
 	
@@ -54,24 +56,24 @@ public class IntegerTest {
 		int val1 = 8;
 		int val2 = 5;
 		
-		IntegerOperations.handleIntSub(val1, val2);		
+		Assert.assertTrue(IntegerOperations.handleIntSub(val1, val2));		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testIntegerMultOverflow(){
 		int val1 = Integer.MAX_VALUE;
 		int val2 = 5;
 		
-		IntegerOperations.handleIntMult(val1, val2);
+		Assert.assertFalse(IntegerOperations.handleIntMult(val1, val2));
 		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testIntegerMultUnderflow(){
 		int val1 = Integer.MIN_VALUE;
 		int val2 = 5;
 		
-		IntegerOperations.handleIntMult(val1, val2);
+		Assert.assertFalse(IntegerOperations.handleIntMult(val1, val2));
 		
 	}
 	
@@ -80,15 +82,15 @@ public class IntegerTest {
 		int val1 = 8;
 		int val2 = 5;
 		
-		IntegerOperations.handleIntMult(val1, val2);		
+		Assert.assertTrue(IntegerOperations.handleIntMult(val1, val2));		
 	}
 	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testIntegerDivOverflow(){
 		int val1 = -1;
 		int val2 = Integer.MIN_VALUE;
 		
-		IntegerOperations.handleIntDiv(val1, val2);
+		Assert.assertFalse(IntegerOperations.handleIntDiv(val1, val2));
 		
 	}
 	
@@ -97,7 +99,7 @@ public class IntegerTest {
 		int val1 = 8;
 		int val2 = 5;
 		
-		IntegerOperations.handleIntDiv(val1, val2);		
+		Assert.assertTrue(IntegerOperations.handleIntDiv(val1, val2));		
 	}
 	
 }

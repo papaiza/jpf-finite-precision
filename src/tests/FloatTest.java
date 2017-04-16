@@ -1,25 +1,25 @@
 package tests;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import listener.FloatOperations;
 
 public class FloatTest {
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testFloatAddCancellation(){
 		float val1 = Float.MAX_VALUE;
-	    float val2 = 0.463298662704123123f;
+	    float val2 = 0.46329866f;
 		
-		FloatOperations.handleFloatAdd(val1, val2);
+		Assert.assertFalse(FloatOperations.handleFloatAdd(val1, val2));
 		
 	}
-	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testFloatAddNaN(){
 		float val1 = 1.0f/0.0f;
 		float val2 = 2;
 		
-		FloatOperations.handleFloatAdd(val1, val2);
+		Assert.assertFalse(FloatOperations.handleFloatAdd(val1, val2));
 		
 	}
 	
@@ -28,76 +28,79 @@ public class FloatTest {
 		float val1 = 8.25123123f;
 		float val2 = 5.35123123f;
 		
-		FloatOperations.handleFloatAdd(val1, val2);		
+		Assert.assertTrue(FloatOperations.handleFloatAdd(val1, val2));		
 	}
-	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testFloatSubCancellation(){
-		float val1 = Float.MAX_VALUE;
-	    float val2 = 0.463298662704123123f;
+		float val1 = Float.MIN_VALUE;
+	    float val2 = Float.MAX_VALUE;
 		
-		FloatOperations.handleFloatSub(val2, val1);
+	    Assert.assertFalse(FloatOperations.handleFloatSub(val1, val2));
 		
 	}
-	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testFloatSubNaN(){
-		float val1 = Float.NEGATIVE_INFINITY;
-		float val2 = Float.POSITIVE_INFINITY;
+		float val1 = Float.POSITIVE_INFINITY;
+		float val2 = Float.NEGATIVE_INFINITY;
 		
-		FloatOperations.handleFloatSub(val2, val1);
+		Assert.assertFalse(FloatOperations.handleFloatSub(val2, val1));
 		
 	}
 	
 	@Test
 	public void testFloatSub(){
-		float val1 = 8.1234123f;
-		float val2 = 5.123123234f;
+		float val1 = 0.45f;
+		float val2 = 1.2f;
 		
-		FloatOperations.handleFloatSub(val1, val2);		
+		Assert.assertTrue(FloatOperations.handleFloatSub(val1, val2));		
 	}
-	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testFloatMultCancellation(){
-		float val1 = Float.MAX_VALUE;
-		float val2 = 5;
+		float val1 = 0.46329866f;
+		float val2 = Float.MAX_VALUE;
 		
-		FloatOperations.handleFloatMult(val1, val2);
+		Assert.assertFalse(FloatOperations.handleFloatMult(val1, val2));
 		
 	}
-	
-	@Test(expected=ArithmeticException.class)
+	@Test
 	public void testFloatMultNaN(){
-		float val1 = Float.MIN_VALUE;
+		float val1 = Float.POSITIVE_INFINITY;
 		float val2 = 5;
 		
-		FloatOperations.handleFloatMult(val1, val2);
+		Assert.assertFalse(FloatOperations.handleFloatMult(val1, val2));
 		
 	}
 	
 	@Test
 	public void testFloatMult(){
-		float val1 = 8;
+		float val1 = 8.02f;
+		float val2 = 5.05f;
+		
+		Assert.assertTrue(FloatOperations.handleFloatMult(val1, val2));		
+	}
+	@Test
+	public void testFloatDivCancellation(){
+		float val1 = 0.46329866f;
+		float val2 = Float.MAX_VALUE;
+		
+		Assert.assertFalse(FloatOperations.handleFloatDiv(val1, val2));
+		
+	}
+	@Test
+	public void testFloatDivNaN(){
+		float val1 = Float.MIN_VALUE;
 		float val2 = 5;
 		
-		FloatOperations.handleFloatMult(val1, val2);		
-	}
-	
-	@Test(expected=ArithmeticException.class)
-	public void testFloatDivCancellation(){
-		float val1 = -1;
-		float val2 = Float.MIN_VALUE;
-		
-		FloatOperations.handleFloatDiv(val1, val2);
+		Assert.assertFalse(FloatOperations.handleFloatDiv(val1, val2));
 		
 	}
 	
 	@Test
 	public void testFloatDiv(){
-		float val1 = 8;
-		float val2 = 5;
+		float val1 = 1f;
+		float val2 = 1f;
 		
-		FloatOperations.handleFloatDiv(val1, val2);		
+		Assert.assertTrue(FloatOperations.handleFloatDiv(val1, val2));		
 	}
 
 }
