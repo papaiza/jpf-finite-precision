@@ -9,7 +9,7 @@ public class LongTest {
 	@Test
 	public void testLongAddOverflow(){
 		long val1 = Long.MAX_VALUE;
-		long val2 = 5;
+		long val2 = 5L;
 		
 		Assert.assertFalse(LongOperations.handleLongAdd(val1, val2));
 		
@@ -18,7 +18,7 @@ public class LongTest {
 	@Test
 	public void testLongAddUnderflow(){
 		long val1 = Long.MIN_VALUE;
-		long val2 = -5;
+		long val2 = -5L;
 		
 		Assert.assertFalse(LongOperations.handleLongAdd(val1, val2));
 		
@@ -26,8 +26,8 @@ public class LongTest {
 	
 	@Test
 	public void testLongAdd(){
-		long val1 = 8;
-		long val2 = 5;
+		long val1 = 8L;
+		long val2 = 5L;
 		
 		Assert.assertTrue(LongOperations.handleLongAdd(val1, val2));		
 	}
@@ -35,7 +35,7 @@ public class LongTest {
 	@Test
 	public void testLongSubOverflow(){
 		long val1 = Long.MAX_VALUE;
-		long val2 = -5;
+		long val2 = -5L;
 		
 		Assert.assertFalse(LongOperations.handleLongSub(val2, val1));
 		
@@ -44,7 +44,7 @@ public class LongTest {
 	@Test
 	public void testLongSubUnderflow(){
 		long val1 = Long.MIN_VALUE;
-		long val2 = 5;
+		long val2 = 5L;
 		
 		Assert.assertFalse(LongOperations.handleLongSub(val2, val1));
 		
@@ -52,8 +52,8 @@ public class LongTest {
 	
 	@Test
 	public void testLongSub(){
-		long val1 = 8;
-		long val2 = 5;
+		long val1 = 8L;
+		long val2 = 5L;
 		
 		Assert.assertTrue(LongOperations.handleLongSub(val1, val2));		
 	}
@@ -61,7 +61,7 @@ public class LongTest {
 	@Test
 	public void testLongMultOverflow(){
 		long val1 = Long.MAX_VALUE;
-		long val2 = 5;
+		long val2 = 5L;
 		
 		Assert.assertFalse(LongOperations.handleLongMult(val1, val2));
 		
@@ -70,7 +70,7 @@ public class LongTest {
 	@Test
 	public void testLongMultUnderflow(){
 		long val1 = Long.MIN_VALUE;
-		long val2 = 5;
+		long val2 = 5L;
 		
 		Assert.assertFalse(LongOperations.handleLongMult(val1, val2));
 		
@@ -78,15 +78,15 @@ public class LongTest {
 	
 	@Test
 	public void testLongMult(){
-		long val1 = 8;
-		long val2 = 5;
+		long val1 = 8L;
+		long val2 = 5L;
 		
 		Assert.assertTrue(LongOperations.handleLongMult(val1, val2));		
 	}
 	
 	@Test
 	public void testLongDivOverflow(){
-		long val1 = -1;
+		long val1 = -1L;
 		long val2 = Long.MIN_VALUE;
 		
 		Assert.assertFalse(LongOperations.handleLongDiv(val1, val2));
@@ -95,8 +95,8 @@ public class LongTest {
 	
 	@Test
 	public void testLongDiv(){
-		long val1 = 8;
-		long val2 = 5;
+		long val1 = 8L;
+		long val2 = 5L;
 		
 		Assert.assertTrue(LongOperations.handleLongDiv(val1, val2));		
 	}

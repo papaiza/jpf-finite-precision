@@ -7,7 +7,6 @@ import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
 import gov.nasa.jpf.vm.VM;
 import gov.nasa.jpf.vm.VMListener;
-import gov.nasa.jpf.vm.bytecode.ArrayElementInstruction;
 
 public class FinitePrecisionListener extends ListenerAdapter implements VMListener{
 	
@@ -32,13 +31,16 @@ public class FinitePrecisionListener extends ListenerAdapter implements VMListen
 	}
     }
 	
-	
+    /**
+     * Checks if the instruction being executed is a bytecode math operation
+     *
+     * @param vm JPF's virtual machine.
+     * @param currentThread the thread currently executing.
+     * @param instructionToExecute the instruction being executed
+     */
 	@Override
 	public void executeInstruction(VM vm, ThreadInfo currentThread, Instruction instructionToExecute){
 		
-//		if (instructionToExecute instanceof ArrayElementInstruction)
-//		{
-//		}
 		if(this.withinMain){
 			if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.FADD")){
 				StackFrame frame = currentThread.getModifiableTopFrame();
@@ -114,14 +116,9 @@ public class FinitePrecisionListener extends ListenerAdapter implements VMListen
 			}
 			else if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.LADD")){
 				StackFrame frame = currentThread.getModifiableTopFrame();
-				try{
-					long val1 = frame.popLong();
-					long val2 = frame.popLong();
-					LongOperations.handleLongAdd(val1, val2);
-				}catch(ArrayIndexOutOfBoundsException e){
-////					e.printStackTrace();
-				}
-				
+				long val1 = frame.popLong();
+				long val2 = frame.popLong();
+				LongOperations.handleLongAdd(val1, val2);
 			}
 			else if(instructionToExecute.getClass().getName().equals("gov.nasa.jpf.jvm.bytecode.LSUB")){
 				StackFrame frame = currentThread.getModifiableTopFrame();

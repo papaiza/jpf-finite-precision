@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class DoubleOperations {
 	/*
-	 * Handle Double Division Overflow
+	 * Handle Double Addition Rounding Errors
 	 */
 	public static boolean handleDoubleAdd(double val1, double val2) {
 		
@@ -24,7 +24,7 @@ public class DoubleOperations {
 	}
 	
 	/*
-	 * Handle Double Subtraction Overflow and Underflow
+	 * Handle Double Subtraction Rounding Errors
 	 */
 	public static boolean handleDoubleSub(double val1, double val2){
 		
@@ -43,7 +43,7 @@ public class DoubleOperations {
 	}
 	
 	/*
-	 * Handle Double Multiplication Overflow and Underflow
+	 * Handle Double Multiplication Rounding Errors
 	 */
 	public static boolean handleDoubleMult(double val1, double val2){
 		
@@ -62,7 +62,7 @@ public class DoubleOperations {
 	}
 	
 	/*
-	 * Handle Double Division Overflow
+	 * Handle Double Division Rounding Errors
 	 */
 	public static boolean handleDoubleDiv(double val1, double val2){
 		
@@ -89,7 +89,10 @@ public class DoubleOperations {
 		int integerPlaces = text.indexOf('.');
 		return -(text.length() - integerPlaces - 1);
 	}
-
+	
+	/*
+	 * Method to compare the difference between double operations and big decimal operations
+	 */
 	private static boolean compareToBigDecimal(double val1, double val2 , double result, String operator) {
 		int decimal = getDecimalAmount(val1, val2);
 		
@@ -105,7 +108,11 @@ public class DoubleOperations {
 		}else if(operator == "*"){
 			return (v1.multiply(v2).subtract(res).compareTo(comp) == 1);
 		}else if(operator == "/"){
-			return (v2.divide(v1).subtract(res).compareTo(comp) == 1);
+			try{
+				return (v2.divide(v1).subtract(res).compareTo(comp) == 1);
+			}catch(ArithmeticException e){
+				return true;
+			}
 		}else{
 			return false;
 		}

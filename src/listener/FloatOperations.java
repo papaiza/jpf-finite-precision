@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class FloatOperations {
 	
 	/*
-	 * Handle Float Division Overflow
+	 * Handle Float Addition Rounding Errors
 	 */
 	public static boolean handleFloatAdd(float val1, float val2) {
 		
@@ -25,12 +25,11 @@ public class FloatOperations {
 	}
 	
 	/*
-	 * Handle Float Subtraction Overflow and Underflow
+	 * Handle Float Subtraction Rounding Errors
 	 */
 	public static boolean handleFloatSub(float val1, float val2){
 		
 		float result = val2 - val1;
-		System.out.println("" + val2 + " - " + val1 + " = " + result);
 		if(isNaN(result)){
 			System.out.println("WARNING: Result is not a number: " + val2 + " - " + val1 + " = " + result);
 			return false;
@@ -44,7 +43,7 @@ public class FloatOperations {
 	}
 	
 	/*
-	 * Handle Float Multiplication Overflow and Underflow
+	 * Handle Float Multiplication Rounding Errors
 	 */
 	public static boolean handleFloatMult(float val1, float val2){
 		
@@ -63,7 +62,7 @@ public class FloatOperations {
 	}
 	
 	/*
-	 * Handle Float Division Overflow
+	 * Handle Float Division Rounding Errors
 	 */
 	public static boolean handleFloatDiv(float val1, float val2){
 		
@@ -109,8 +108,6 @@ public class FloatOperations {
 	    
 	    int bitsRes = Float.floatToIntBits(res);
 	    int exponentRes = ((bitsRes & 0x7f800000) >> 22) -127;
-//	    System.out.printf("V1: %.6f, V2: %.6f, Res: %.6f\n", f1, f2, res);
-//	    System.out.printf("Bits1: %d , Bits2: %d, BitsRes: %d\n", exponent1, exponent2, exponentRes);
 	       
 	    if(Math.max(exponent1, exponent2) - exponentRes >= 3 || compareToBigDecimal(f1, f2, res, operator)){
 	    	return true;
@@ -121,7 +118,9 @@ public class FloatOperations {
 	  }
 
 
-
+	/*
+	 * Method to compare the difference between float operations and big decimal operations
+	 */
 	private static boolean compareToBigDecimal(float val1, float val2 , float result, String operator) {
 		int decimal = getDecimalAmount(val1, val2);
 		
@@ -133,7 +132,6 @@ public class FloatOperations {
 		if(operator == "+"){
 			return (v1.add(v2).subtract(res).compareTo(comp) == 1);
 		}else if(operator == "-"){
-			System.out.println(v2.subtract(v1));
 			return (v2.subtract(v1).subtract(res).compareTo(comp) == 1);
 		}else if(operator == "*"){
 			return (v1.multiply(v2).subtract(res).compareTo(comp) == 1);

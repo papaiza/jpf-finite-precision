@@ -7,7 +7,7 @@ import org.junit.runner.notification.Failure;
 import org.junit.runners.Suite;
 
 
-@Suite.SuiteClasses({ IntegerTest.class, LongTest.class, FloatTest.class})
+@Suite.SuiteClasses({ IntegerTest.class, LongTest.class, FloatTest.class, DoubleTest.class})
 @RunWith(Suite.class)
 public class TestSuite {
 

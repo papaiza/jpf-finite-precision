@@ -19,9 +19,9 @@ public class FloatMain {
 	    float res = a + b;
 	    
 	    float a2 = Float.MAX_VALUE;
-	    float b2 = 0.4f;
+	    float b2 = 0.412312312f;
 	    // This should fail
-	    float res2 = a2 - b2;
+	    float res2 = b2 - a2;
 	    
 	    float a3 = Float.MAX_VALUE;
 	    float b3 = 0.46329866f;

@@ -32,9 +32,9 @@ public class FloatTest {
 	}
 	@Test
 	public void testFloatSubCancellation(){
-		float val1 = Float.MIN_VALUE;
-	    float val2 = Float.MAX_VALUE;
-		
+		float val1 = Float.MAX_VALUE;
+	    float val2 = 0.1231243f;
+				
 	    Assert.assertFalse(FloatOperations.handleFloatSub(val1, val2));
 		
 	}
@@ -49,8 +49,8 @@ public class FloatTest {
 	
 	@Test
 	public void testFloatSub(){
-		float val1 = 0.45f;
-		float val2 = 1.2f;
+		float val1 = 0.890123f;
+		float val2 = 0.543212f;
 		
 		Assert.assertTrue(FloatOperations.handleFloatSub(val1, val2));		
 	}
