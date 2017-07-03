@@ -17,7 +17,7 @@ for potential round off errors in float and double operations(addition, subtract
 No work has been done on milestone 4.
 
 
-HOW TO RUN
+## HOW TO RUN
 1. Download the source folder.
 
 2. Import the project into Eclipse, IntelliJ or any other Java Editor
