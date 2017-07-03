@@ -1,8 +1,10 @@
+# Introduction
 The FinitePrecisionListener is a JPF listener that detects when round off error will occur. 
 The motivation for the listener is to create something that will alert the user when a highly 
 precise calculation could cause a round off error, which could potentially lead to further errors in different calculations. 
 The listener has also been designed to catch overflow and underflow in integer and long operations. 
 
+# Goals
 Initially, I proposed to complete these milestones:
 	1)	Listener can detect when a mathematical operation is being computed
 	2)	Listener can detect when division by a small number is being computed.
@@ -17,7 +19,7 @@ for potential round off errors in float and double operations(addition, subtract
 No work has been done on milestone 4.
 
 
-##HOW TO RUN
+# HOW TO RUN
 1. Download the source folder.
 
 2. Import the project into Eclipse, IntelliJ or any other Java Editor
