@@ -19,14 +19,16 @@ No work has been done on milestone 4.
 
 HOW TO RUN
 1. Download the source folder.
+
 2. Import the project into Eclipse, IntelliJ or any other Java Editor
-3. Configure the build path of the project to include JUnit 4 and JPF. Both of these jar files can be found in 
-	the folder "jars" which comes with the source code. Installing JPF is required to use this listener, so make 
-	sure to have JPF installed and working on your computer.
-4. There are four example programs in the folder src/main. Please compile each of these files by running each 
-	as a java application in your choice of editor. 
-5. There are four .jpf files in the src folder coinciding to each example file in the src/main folder. The classpaths 
-	are pointing to the ./bin folder, but can be changed to the user's preference. 
+
+3. Configure the build path of the project to include JUnit 4 and JPF. Both of these jar files can be found in the folder "jars" which comes with the source code. Installing JPF is required to use this listener, so make sure to have JPF installed and working on your computer.
+
+4. There are four example programs in the folder src/main. Please compile each of these files by running each as a java application in your choice of editor. 
+
+5. There are four .jpf files in the src folder coinciding to each example file in the src/main folder. The classpaths are pointing to the ./bin folder, but can be changed to the user's preference. 
+
 6. To run the jpf files, simply type "jpf <name>.jpf" in your terminal or right click on the file and hit "Verify.." if 
-	using the eclipse JPF plugin. One can then see in the console that some of the cases in the example can cause a round off error. 
+using the eclipse JPF plugin. One can then see in the console that some of the cases in the example can cause a round off error. 
+
 7. The test cases can be run by running the file src/tests/TestSuite.java as a JUnit test.
